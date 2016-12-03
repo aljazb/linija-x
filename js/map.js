@@ -33,12 +33,16 @@ class Map{
     }
     
     _searchFromChanged(e){
+        if(this.mode == "FIND")
+            return;
         if(e.key=="Enter"){
             this._searchPlace("from");
         }
     }
     
     _searchToChanged(e){
+        if(this.mode == "FIND")
+            return;
         if(e.key=="Enter"){
             this._searchPlace("to");
         }
@@ -169,6 +173,11 @@ class Map{
     
     setOnStationsChangedListener(f){
         this.onStationsChangedListener = f;
+    }
+    
+    search(){
+        this._searchPlace("from");
+        this._searchPlace("to");
     }
     
 }
