@@ -5,9 +5,6 @@ function main() {
     $("#prevoznik").click(prevoznik_clicked);
     $("#isci_prevoznika").click(isci_prevoznika);
     $("#potrditev_prevoznika").click(potrditev_prevoznika);
-    
-    // prikazi_prevoz(podatki["prevozi"][0]);
-    
 }
 
 
@@ -32,6 +29,7 @@ function prevoznik_clicked() {
     $("#prevoznik").addClass("active");
     
     initMapId("map_2", "vstop_2", "izstop_2", "EDIT");
+    map.setOnStationsChangedListener(dodajPostaje);
 }
 
 
@@ -43,12 +41,13 @@ function isci_prevoznika() {
     console.log(dan);
     
     // check if not empty
-    
+    map.search();
 }
 
 
 function initMap() {
     initMapId ("map_2", "vstop_2", "izstop_2", "EDIT");
+    map.setOnStationsChangedListener(dodajPostaje);
 }
 
 
@@ -123,4 +122,12 @@ function potrditev_prevoznika() {
 
 function initMapId (map_id, vstop_id, izstop_id, mode) {
     map = new Map(document.getElementById(map_id), document.getElementById(vstop_id),document.getElementById(izstop_id), mode);
+}
+
+
+function dodajPostaje(stevilo) {
+    $("#dodanePostaje").html("");
+    for (var i = 0; i < stevilo; i++) {
+        $("#dodanePostaje").append(`<div class="panel-body"><input type="text" class="form-control" id="postaja" value="Postaja ${i+1}"></div>`)
+    }
 }

@@ -38,7 +38,7 @@
             </div>
         </div>
         
-        <div class="uporabnik" >
+        <div class="uporabnik" style="display: none;" >
             <div class="container top_margin" style="display: none;" id="izbran_prevoz">
                 <h3> Trenutni prevozi </h3>
                 <div class="panel-group">
@@ -206,38 +206,36 @@
                     </div>
                     <div class="panel-body">
                         <div class="col-lg-6">
-                            Hajdrihova
+                            Moškričeva 36
                         </div>
                         <div class="col-lg-6">
-                            <img src="images/aljaz.png" class="img-circle" style="height: 30px;"> 
-                            <img src="images/aljaz.png" class="img-circle" style="height: 30px;"> 
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="col-lg-6">
-                            Venera
-                        </div>
-                        <div class="col-lg-6">
-                            <img src="images/aljaz.png" class="img-circle" style="height: 30px;"> 
-                            <img src="images/aljaz.png" class="img-circle" style="height: 30px;"> 
+                            <img src="images/profilka_1.jpg" class="img-circle" style="height: 30px;">
                         </div>
                     </div>
                     <div class="panel-body">
                         <div class="col-lg-6">
-                            Cvetličarna
+                            Roška 2
                         </div>
                         <div class="col-lg-6">
-                            <img src="images/aljaz.png" class="img-circle" style="height: 30px;"> 
-                            <img src="images/aljaz.png" class="img-circle" style="height: 30px;"> 
+                            <img src="images/profilka_2.jpg" class="img-circle" style="height: 30px;"> 
+                            <img src="images/profilka_3.jpg" class="img-circle" style="height: 30px;"> 
                         </div>
                     </div>
                     <div class="panel-body">
                         <div class="col-lg-6">
-                            Zemanova punca
+                            Cankarjeva postaja
                         </div>
                         <div class="col-lg-6">
-                            <img src="images/aljaz.png" class="img-circle" style="height: 30px;"> 
-                            <img src="images/aljaz.png" class="img-circle" style="height: 30px;"> 
+                            <img src="images/profilka_1.jpg" class="img-circle" style="height: 30px;"> 
+                            <img src="images/profilka_3.jpg" class="img-circle" style="height: 30px;"> 
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-lg-6">
+                            FRI
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="images/profilka_2.jpg" class="img-circle" style="height: 30px;">
                         </div>
                     </div>
                 </div>
@@ -255,11 +253,11 @@
                             <input type="text" class="form-control" id="izstop_2">
                         </div>
                         <div class=" col-lg-2 form-group">
-                            <label for="ura_prihoda"> Ura prihoda: </label>
+                            <label for="ura_prihoda"> Ura odhoda: </label>
                             <input type="time" class="form-control" id="ura_prihoda">
                         </div>
                         <div class=" col-lg-2 form-group">
-                            <label for="dan_prihoda"> Dan prihoda: </label>
+                            <label for="dan_prihoda"> Dan odhoda: </label>
                             <input type="date" class="form-control" id="dan_prihoda">
                         </div>
                     </div>
@@ -273,7 +271,7 @@
                 </div>
                 
                 <div class="col-lg-6">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary top_margin">
                         <div class="panel-heading">Osnovne informacije</div>
                         <div class="panel-body">
                             <div class="col-md-3">
@@ -334,14 +332,9 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary top_margin">
                         <div class="panel-heading">Postaje</div>
-                        <div class="panel-body">
-                           <input type="text" class="form-control" id="postaja">
-                        </div>
-                        <div class="panel-body">
-                            <input type="text" class="form-control" id="postaja">
-                        </div>
+                        <div id="dodanePostaje"></div>
                     </div>
                 </div>
             </div>
