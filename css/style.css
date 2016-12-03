@@ -2,9 +2,8 @@
     margin-top: 30px !important;
 }
 
-#logo {
+#logo, #profilka {
     margin-top: 10px;
-    margin-left: 0;
 }
 #map, #map_2 {
     height: 100%;
