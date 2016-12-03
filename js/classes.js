@@ -9,16 +9,16 @@ class Linija {
 }
 
 class Postaja {
-    constructor(ime, lokacija, casPrihoda) {
+    constructor(ime, lokacija) {
         this.ime = ime;
         this.lokacija = lokacija;
-        this.casPrihoda = casPrihoda;
     }
 }
 
 class Potnik {
-    constructor(postaja, uporabnik) {
-        this.postaja = postaja;
+    constructor(uporabnik, postajaVstop, postajaIzstop) {
+        this.postajaVstop = postajaVstop;
+        this.postajaIzstop = postajaIzstop;
         this.uporabnik = uporabnik;
     }
 }
@@ -40,5 +40,13 @@ class Avto {
         this.model = model
         this.barva = barva;
         this.registracija = registracija;
+    }
+}
+
+class Prevoz{
+    constructor(linija, datum, potniki){
+        this.linija = linija
+        this.datum = datum
+        this.potniki = potniki
     }
 }
