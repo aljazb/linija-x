@@ -1,4 +1,6 @@
-"use strict"
+Number.prototype.toRad = function() {
+    return this * Math.PI / 180;
+}
 
 class Map{
     constructor(mapElement, searchFrom, searchTo, mode){
@@ -20,7 +22,7 @@ class Map{
         this.path = {waypoints:[]};
         this.clusters = {};
         
-        this.mode = mode; // FIND, 
+        this.mode = mode; // FIND, EDIT 
         
         $(searchFrom).on('keydown', this._searchFromChanged.bind(this));
         $(searchTo).on('keydown', this._searchToChanged.bind(this));
@@ -40,17 +42,10 @@ class Map{
     }
     
     _mapClick(e){
-        if(this.path.active){
+        if(this.path.active && this.mode == "EDIT"){
             this.path.waypoints.push({location:e.latLng, stopover:false});
             this._updatePath();
         }
-    }
-    
-    _testAddMarker(latlng){
-        let m = new google.maps.Marker({
-          position: latlng,
-          map: this.map
-        });
     }
     
     _searchPlace(destination){
@@ -73,12 +68,14 @@ class Map{
     }
     
     _setStart(place){
-        this.path.start = place.geometry.location;
+        let l = place.geometry.location
+        this.path.start = {lat:l.lat(), lng:l.lng()};
         this._renderMap();
     }
     
     _setEnd(place){
-        this.path.end = place.geometry.location;
+        let l = place.geometry.location
+        this.path.end = {lat:l.lat(), lng:l.lng()};
         this._renderMap();
     }
     
@@ -89,17 +86,15 @@ class Map{
     
     _renderClusters(){
         if(this.clusters.start != undefined)
-            this.clusters.start.setMap = null;
+            this.clusters.start.setMap(null);
         if(this.clusters.end != undefined)
-            this.clusters.end.setMap = null;
+            this.clusters.end.setMap(null);
             
         if(this.path.active){
             this.clusters.start = null;
             this.clusters.end = null;
             return;
         }
-        
-        
             
         this.clusters.start = new google.maps.Marker({
           position: this.path.start,
@@ -119,12 +114,25 @@ class Map{
         } else {
             this.path.active = true;
         }
-            
+        
+        let waypoints;
+        let travelMode;
+        if(this.mode=="FIND"){
+            let closest = MapHelper.findClosestPath(this.path.start, this.path.end);
+            waypoints = closest.path.postaje.slice(closest.first, closest.last+1).map((e)=>{
+               return {location:e.lokacija, stopover: false}; 
+            });
+            travelMode = "WALKING";
+        }else {
+            waypoints = this.path.waypoints;
+            travelMode = "DRIVING";
+        }
+        
         let dirQuery = {
           origin: this.path.start,
           destination: this.path.end,
-          travelMode: "DRIVING",
-          waypoints: this.path.waypoints
+          travelMode: travelMode,
+          waypoints: waypoints
         }
         
         this.directionsService.service.route(dirQuery, (result, status) => {
@@ -146,4 +154,46 @@ class Map{
         this._renderMap();
     }
     
+}
+
+var MapHelper = {
+    distance: function(point1, point2){
+        var R = 6371; // km 
+        var x1 = point2.lat-point1.lat;
+        
+        var dLat = x1.toRad();  
+        var x2 = point2.lng-point1.lng;
+        var dLon = x2.toRad();  
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+                        Math.cos(point1.lat.toRad()) * Math.cos(point2.lat.toRad()) * 
+                        Math.sin(dLon/2) * Math.sin(dLon/2);  
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var d = R * c; 
+        
+        return d;
+    },
+    findClosestPath: function(start, end){
+        let shortest = podatki.prevozi.map((prevoz, i)=>{
+            let linija = podatki.linije[prevoz.linija];
+            let minIn = linija.postaje.map((postaja, j)=>{
+                return [this.distance(postaja.lokacija, start), j];
+            }).sort()[0];
+            let minOut = linija.postaje.slice(minIn[1]).map((postaja, j)=>{
+                return [this.distance(postaja.lokacija, end), j+minIn[1]];
+            }).sort()[0];
+            
+            console.log(minIn);
+            console.log(minOut);
+            return [minIn[0]+minOut[0], minIn[1], minOut[1], i];
+        }).sort()[0];
+        
+        let pr = podatki.prevozi[shortest[3]];
+        return {
+            drive: pr,
+            path: podatki.linije[pr.linija],
+            first: shortest[1],
+            last: shortest[2],
+            distance: shortest[0]
+        };
+    }
 }
