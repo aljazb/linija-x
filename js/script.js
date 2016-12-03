@@ -5,6 +5,8 @@ function main() {
     $("#prevoznik").click(prevoznik_clicked);
     $("#isci_prevoznika").click(isci_prevoznika);
     
+    prikazi_prevoz(podatki["prevozi"][0]);
+    
 }
 
 
@@ -53,6 +55,39 @@ function initMapId (map_id, vstop_id, izstop_id) {
 }
 
 
-function prikazi_prevoz() {
+function prikazi_prevoz(prevoz) {
+    var linija = podatki["linije"][prevoz.linija];
+    var datum = prevoz.datum;
+    var ura = String(linija.odhodi["ura"]);
+    
+    var decimalka = ura.split(".");
+    ura = decimalka[0];
+    var minute = String(Math.round(parseFloat("0."+decimalka[1]) * 60));
+    if (minute.length == 1) {
+        minute = "0" + minute;
+    }
+    ura += ":" + minute;
+    
+    var leto = datum.getFullYear()
+    var mesec = datum.getMonth();
+    var dan = datum.getDate();
+    datum = dan + ". " + mesec + ". " +leto;
+    
+    var datum_ura = datum + " ob " + ura;
+    
+    var postaje = linija.postaje;
+    var avto = linija.avto;
+    
+    $("#ime_linije").text(linija.ime);
+    $("#datum_ura").text(datum_ura);
+    $("#voznik").text(podatki["uporabniki"][linija.voznik].ime + " " + podatki["uporabniki"][linija.voznik].priimek);
+    $("#znamka").text(avto.znamka);
+    $("#model").text(avto.model);
+    $("#barva").text(avto.barva);
+    $("#registracija").text(avto.registracija);
+    
+    for (var i=0; i<postaje.length; i++) {
+        // append to HTML
+    }
     
 }

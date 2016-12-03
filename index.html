@@ -10,10 +10,10 @@
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/script.js"></script>
         <script type="text/javascript" src="js/map.js"></script>
         <script type="text/javascript" src="js/classes.js"></script>
         <script type="text/javascript" src="js/podatki.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
     </head>
 
     <body>
@@ -85,72 +85,72 @@
             <div class="container top_margin">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="panel panel-default">
+                        <div class="panel panel-primary">
                             <div class="panel-heading">Osnovne informacije</div>
                             <div class="panel-body">
                                 <div class="col-md-3">
                                     <label>Ime linije</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <p>Ljubljana ekspres</p>
+                                    <p id="ime_linije">Ljubljana ekspres</p>
                                 </div>
                                 
                                 <div class="col-md-3">
-                                    <label>Opombe</label>
+                                    <label>Odhod</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <p>Cenim točnost</p>
+                                    <p id="datum_ura"> datum in ura </p>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="panel panel-default">
+                        <div class="panel panel-primary">
                             <div class="panel-heading">Voznik</div>
                             <div class="panel-body">
                                 <div class="col-md-2">
                                     <img src="images/aljaz.png" class="img-circle" style="height: 40px;"> 
                                 </div>
                                 <div class="col-md-10">
-                                    <p>Aljaž Blažej</p>
+                                    <p id="voznik">Aljaž Blažej</p>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="panel panel-default">
+                        <div class="panel panel-primary">
                             <div class="panel-heading">Avto</div>
                             <div class="panel-body">
                                 <div class="col-md-3">
                                     <label>Znamka</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <p>BMW</p>
+                                    <p id="znamka">BMW</p>
                                 </div>
                         
                                 <div class="col-md-3">
                                     <label>Model</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <p>Serija 3</p>
+                                    <p id="model">Serija 3</p>
                                 </div>
                                 
                                 <div class="col-md-3">
                                     <label>Barva</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <p>Siva</p>
+                                    <p id="barva">Siva</p>
                                 </div> 
                             
                                 <div class="col-md-3">
                                     <label>Registracija</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <p>GO</p>
+                                    <p id="registracija">GO</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                            <div class="panel panel-default">
+                            <div class="panel panel-primary">
                                 <div class="panel-heading">Postaje</div>
                                 <div class="panel-body">
                                     <div class="col-md-4">Postaja</div>
@@ -184,7 +184,7 @@
         <div class="prevoznik">
             <div class="container">
                 <h3>Naslednja vožnja</h3>
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="col-lg-6">Postaje</div>
                         Sopotniki
@@ -258,7 +258,7 @@
                 </div>
                 
                 <div class="col-lg-6">
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">Osnovne informacije</div>
                         <div class="panel-body">
                             <div class="col-md-3">
@@ -268,17 +268,9 @@
                                 <input type="text" class="form-control" id="ime_linije">
                             </div>
                         </div>
-                        <div class="panel-body">
-                            <div class="col-md-3">
-                                <label>Opombe</label>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" id="opombe">
-                            </div>
-                        </div>
                     </div>
                     
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">Avto</div>
                         <div class="panel-body">
                             <div class="col-md-3">
@@ -327,7 +319,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">Postaje</div>
                         <div class="panel-body">
                            <input type="text" class="form-control" id="postaja">
