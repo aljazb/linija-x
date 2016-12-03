@@ -18,7 +18,7 @@ function uporabnik_clicked() {
     $("#prevoznik").removeClass("active");
     $("#uporabnik").addClass("active");
     
-    initMapId("map", "vstop", "izstop");
+    initMapId("map", "vstop", "izstop", "FIND");
 }
 
 
@@ -29,7 +29,7 @@ function prevoznik_clicked() {
     $("#uporabnik").removeClass("active");
     $("#prevoznik").addClass("active");
     
-    initMapId("map_2", "vstop_2", "izstop_2");
+    initMapId("map_2", "vstop_2", "izstop_2", "EDIT");
 }
 
 
@@ -46,12 +46,7 @@ function isci_prevoznika() {
 
 
 function initMap() {
-    initMapId ("map_2", "vstop_2", "izstop_2");
-}
-
-
-function initMapId (map_id, vstop_id, izstop_id) {
-    map = new Map(document.getElementById(map_id), document.getElementById(vstop_id),document.getElementById(izstop_id));
+    initMapId ("map_2", "vstop_2", "izstop_2", "EDIT");
 }
 
 
@@ -90,4 +85,7 @@ function prikazi_prevoz(prevoz) {
         // append to HTML
     }
     
+}
+function initMapId (map_id, vstop_id, izstop_id, mode) {
+    map = new Map(document.getElementById(map_id), document.getElementById(vstop_id),document.getElementById(izstop_id), mode);
 }
