@@ -15,28 +15,28 @@
     </head>
 
     <body>
-        <div class="prevoznik">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        Logotip - slika
-                    </div>
-                    <div class="col-lg-7"> </div>
-                    <div class="col-lg-1"> 
-                        <img src="images/aljaz.png" class="img-thumbnail" style="height: 70px;"> 
-                    </div>
-                </div>     
-            </div>
-            
-            <div class="container top_margin">
-                <div class="row">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#"> Zapeljal bi te ... </a></li>
-                        <li><a href="#"> Zapeljal bi se ... </a></li>
-                    </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    Logotip - slika
                 </div>
+                <div class="col-lg-7"> </div>
+                <div class="col-lg-1"> 
+                    <img src="images/aljaz.png" class="img-thumbnail" style="height: 70px;"> 
+                </div>
+            </div>     
+        </div>
+        
+        <div class="container top_margin">
+            <div class="row">
+                <ul class="nav nav-tabs">
+                    <li class="active" id="prevoznik"><a href="#"> Zapeljal bi te ... </a></li>
+                    <li id="uporabnik"><a href="#"> Peljal bi se ... </a></li>
+                </ul>
             </div>
-            
+        </div>
+        
+        <div class="uporabnik"  style="display: none;">
             <div class="container top_margin">
                 <div class="panel-group">
                     <div class="panel panel-info">
@@ -58,41 +58,58 @@
                         <label for="izstop"> Izstop: </label>
                         <input type="text" class="form-control" id="izstop">
                     </div>
-                    <div class=" col-lg-4 form-group">
-                        <label for="dan_ura_prihoda"> Dan in ura prihoda:</label>
-                        <div id="datetimepicker1" class="input-append date">
-                            <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
-                            <span class="add-on">
-                              <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                              </i>
-                            </span>
-                         </div>
+                    <div class=" col-lg-2 form-group">
+                        <label for="ura_prihoda"> Ura prihoda: </label>
+                        <input type="time" class="form-control" id="ura_prihoda">
+                    </div>
+                    <div class=" col-lg-2 form-group">
+                        <label for="dan_prihoda"> Dan prihoda: </label>
+                        <input type="date" class="form-control" id="dan_prihoda">
                     </div>
                 </div>
             </div>
-        </div>
-        
-        
-        <div class="container">
-            <div class="row">
-                <div class='col-sm-6'>
-                    <div class="form-group">
-                        <div class='input-group date' id='datetimepicker2'>
-                            <input type='text' class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        
-        <div class="uporabnik">
             
+            <div class="container top_margin">
+                <div class="row">
+                    <div class="panel panel-info">
+                        <div class="panel-heading"> Ime linije </div>
+                        <div class="panel panel-default clearfix">
+                            <div class="col-lg-3">
+                                <h3> Aljaž Blažej </h3>
+                            </div>
+                            <div class="col-lg-3">
+                                <h4> Avto: </h4>
+                                <ul>
+                                    <li> znamka: <span id="znamka"> BMW </span> </li>
+                                    <li> model: <span id="model"> M4 </span> </li>
+                                    <li> barva: <span id="barva"> siva </span> </li>
+                                    <li> registracija: <span id="registracija"> GO </span> </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4> Postaje: </h4>
+                                <ul>
+                                    <li> FRI </span> </li>
+                                    <li> Cankarjev dom </li>
+                                    <li> Aškerčeva cesta </li>
+                                    <li> Roška cesta </li>
+                                    <li> #Martina </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="btn btn-info btn-md btn-block" id="potrditev_prevoznika"> Potrdi </button>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+        <div class="prevoznik">
+            test
         </div>
         
     </body>
