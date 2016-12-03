@@ -29,6 +29,7 @@ function prevoznik_clicked() {
     $("#prevoznik").addClass("active");
     
     initMapId("map_2", "vstop_2", "izstop_2", "EDIT");
+    map.setOnStationsChangedListener(dodajPostaje);
 }
 
 
@@ -46,6 +47,7 @@ function isci_prevoznika() {
 
 function initMap() {
     initMapId ("map_2", "vstop_2", "izstop_2", "EDIT");
+    map.setOnStationsChangedListener(dodajPostaje);
 }
 
 
@@ -93,6 +95,6 @@ function initMapId (map_id, vstop_id, izstop_id, mode) {
 function dodajPostaje(stevilo) {
     $("#dodanePostaje").html("");
     for (var i = 0; i < stevilo; i++) {
-        $("#dodanePostaje").append(`<div class="panel-body"><input type="text" class="form-control" id="postaja" value="Postaja ${i}"></div>`)
+        $("#dodanePostaje").append(`<div class="panel-body"><input type="text" class="form-control" id="postaja" value="Postaja ${i+1}"></div>`)
     }
 }
