@@ -1,42 +1,122 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        
         <title> Linija X </title>
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
         
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
         <script type="text/javascript" src="js/map.js"></script>
+        <script type="text/javascript" src="js/podatki.js"></script>
+        <script type="text/javascript" src="js/classes.js"></script>
         
         <style>
-          /* Always set the map height explicitly to define the size of the div
-           * element that contains the map. */
           #map {
             height: 100%;
-          }
-          /* Optional: Makes the sample page fill the window. */
-          html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
           }
         </style>
     </head>
 
     <body>
-        <input id="searchFrom" type="text"></input>
-        <input id="searchTo" type="text"></input>
-        <div id="map"></div>
-    <script>
-        function initMap(){
-           map = new Map(document.getElementById("map"), document.getElementById("searchFrom"),document.getElementById("searchTo"))
-        }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4fuc-3IJ4aAoLzYXdcRY3bYhV_bjyktw&callback=initMap&libraries=places"
-    async defer></script>
+        <div class="prevoznik">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        Logotip - slika
+                    </div>
+                    <div class="col-lg-7"> </div>
+                    <div class="col-lg-1"> 
+                        <img src="images/aljaz.png" class="img-thumbnail" style="height: 70px;"> 
+                    </div>
+                </div>     
+            </div>
+            
+            <div class="container top_margin">
+                <div class="row">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#"> Zapeljal bi te ... </a></li>
+                        <li><a href="#"> Zapeljal bi se ... </a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="container top_margin">
+                <div class="panel-group">
+                    <div class="panel panel-info">
+                        <div class="panel-heading"> Ime postaje .... čas odhoda..... <button class="glyphicon glyphicon-ok"></button> <button class="glyphicon glyphicon-remove"></button> </div>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading"> Ime postaje .... čas odhoda..... <button class="glyphicon glyphicon-ok"></button> <button class="glyphicon glyphicon-remove"></button> </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container top_margin">
+                <div class="row">
+                    <div class="col-lg-4 form-group">
+                        <label for="vstop"> Vstop: </label>
+                        <input type="text" class="form-control" id="vstop">
+                    </div>
+                    <div class=" col-lg-4 form-group">
+                        <label for="izstop"> Izstop: </label>
+                        <input type="text" class="form-control" id="izstop">
+                    </div>
+                    <div class=" col-lg-4 form-group">
+                        <label for="dan_ura_prihoda"> Dan in ura prihoda:</label>
+                        <div id="datetimepicker1" class="input-append date">
+                            <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+                            <span class="add-on">
+                              <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                              </i>
+                            </span>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="row" style="height: 600px">
+                    <div id="map" class="col-lg-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="container">
+            <div class="row">
+                <div class='col-sm-6'>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker2'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+        <div class="uporabnik">
+            
+        </div>
+        
+        <script>
+            function initMap(){
+               map = new Map(document.getElementById("map"), document.getElementById("vstop"),document.getElementById("izstop"))
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4fuc-3IJ4aAoLzYXdcRY3bYhV_bjyktw&callback=initMap&libraries=places"
+        async defer></script>
     </body>
 
 </html>
