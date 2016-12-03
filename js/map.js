@@ -24,6 +24,7 @@ class Map{
         
         this.mode = mode; // FIND, EDIT 
         
+
         this.onPathChangedListener = function(e) {};
         this.onStationsChangedListener = function(e) {};
         

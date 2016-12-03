@@ -38,8 +38,8 @@
             </div>
         </div>
         
-        <div class="uporabnik"  style="display: none;">
-            <div class="container top_margin">
+        <div class="uporabnik" style="display: none;" >
+            <div class="container top_margin" style="display: none;" id="izbran_prevoz">
                 <h3> Trenutni prevozi </h3>
                 <div class="panel-group">
                     <div class="panel panel-primary">
@@ -50,10 +50,10 @@
                                 Postaja
                         </div>
                         <div class="panel-body">
-                            <div class="col-md-3">
+                            <div class="col-md-3" id="ura_prevoza">
                                 18:30
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3" id="lokacija_prevoza">
                                 Tobačna
                             </div>
                             <div class="col-md-6">
@@ -97,7 +97,7 @@
                 </div>
             </div>
             
-            <div class="container top_margin">
+            <div class="container top_margin" style="display: none;" id="prevoz_info">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="panel panel-primary">
@@ -165,32 +165,32 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">Postaje</div>
-                                <div class="panel-body">
-                                    <div class="col-md-4">Postaja</div>
-                                    <div class="col-md-8"></div>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="col-md-4">Postaja</div>
-                                    <div class="col-md-8"><p class="text-success">Vstop</p></div>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="col-md-4">Postaja</div>
-                                    <div class="col-md-8"></div>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="col-md-4">Postaja</div>
-                                    <div class="col-md-8"><p class="text-danger">Izstop</p></div>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="col-md-4">Postaja</div>
-                                    <div class="col-md-8"></div>
-                                </div>
-                            </div>
+                        <div class="panel panel-primary" id ="postaje">
+                            <!--<div class="panel-heading">Postaje</div>-->
+                            <!--<div class="panel-body">-->
+                            <!--    <div class="col-md-4"></div>-->
+                            <!--    <div class="col-md-8"></div>-->
+                            <!--</div>-->
+                            <!--<div class="panel-body">-->
+                            <!--    <div class="col-md-4"></div>-->
+                            <!--    <div class="col-md-8"><p class="text-success">Vstop</p></div>-->
+                            <!--</div>-->
+                            <!--<div class="panel-body">-->
+                            <!--    <div class="col-md-4"></div>-->
+                            <!--    <div class="col-md-8"></div>-->
+                            <!--</div>-->
+                            <!--<div class="panel-body">-->
+                            <!--    <div class="col-md-4"></div>-->
+                            <!--    <div class="col-md-8"><p class="text-danger">Izstop</p></div>-->
+                            <!--</div>-->
+                            <!--<div class="panel-body">-->
+                            <!--    <div class="col-md-4"></div>-->
+                            <!--    <div class="col-md-8"></div>-->
+                            <!--</div>-->
                         </div>
+                    </div>
                     <div class="col-md-12">
-                    <button type="button" class="btn btn-info btn-md btn-block" id="potrditev_prevoznika"> Potrdi </button>
+                        <button type="button" class="btn btn-info btn-md btn-block" id="potrditev_prevoznika"> Potrdi </button>
                     </div>                
                 </div>
             </div>
@@ -253,11 +253,11 @@
                             <input type="text" class="form-control" id="izstop_2">
                         </div>
                         <div class=" col-lg-2 form-group">
-                            <label for="ura_prihoda"> Ura prihoda: </label>
+                            <label for="ura_prihoda"> Ura odhoda: </label>
                             <input type="time" class="form-control" id="ura_prihoda">
                         </div>
                         <div class=" col-lg-2 form-group">
-                            <label for="dan_prihoda"> Dan prihoda: </label>
+                            <label for="dan_prihoda"> Dan odhoda: </label>
                             <input type="date" class="form-control" id="dan_prihoda">
                         </div>
                     </div>
