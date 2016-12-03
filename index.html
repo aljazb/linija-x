@@ -12,8 +12,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
         <script type="text/javascript" src="js/map.js"></script>
-        <script type="text/javascript" src="js/podatki.js"></script>
         <script type="text/javascript" src="js/classes.js"></script>
+        <script type="text/javascript" src="js/podatki.js"></script>
         
         <style>
           #map {
@@ -112,7 +112,8 @@
         
         <script>
             function initMap(){
-               map = new Map(document.getElementById("map"), document.getElementById("vstop"),document.getElementById("izstop"))
+               map = new Map(document.getElementById("map"), document.getElementById("vstop"),document.getElementById("izstop"));
+               //map.drawPath(podatki.linije[0]);
             }
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4fuc-3IJ4aAoLzYXdcRY3bYhV_bjyktw&callback=initMap&libraries=places"

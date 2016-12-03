@@ -18,6 +18,8 @@ class Map{
         this.searchTo = {element: searchTo, searchBox: new google.maps.places.SearchBox(searchTo)};
         
         this.path = {waypoints:[]};
+        this.clusters = {};
+        
         this.mode = mode; // FIND, 
         
         $(searchFrom).on('keydown', this._searchFromChanged.bind(this));
@@ -71,27 +73,43 @@ class Map{
     }
     
     _setStart(place){
-        if(this.path.start != undefined){
-            this.path.start.setMap(null);
-        }
-        this.path.start = new google.maps.Marker({
-          position: place.geometry.location,
-          map: this.map
-        });
-        
-        this._updatePath();
+        this.path.start = place.geometry.location;
+        this._renderMap();
     }
     
     _setEnd(place){
-        if(this.path.end != undefined){
-            this.path.end.setMap(null);
+        this.path.end = place.geometry.location;
+        this._renderMap();
+    }
+    
+    _renderMap(){
+        this._updatePath();
+        this._renderClusters();
+    }
+    
+    _renderClusters(){
+        if(this.clusters.start != undefined)
+            this.clusters.start.setMap = null;
+        if(this.clusters.end != undefined)
+            this.clusters.end.setMap = null;
+            
+        if(this.path.active){
+            this.clusters.start = null;
+            this.clusters.end = null;
+            return;
         }
-        this.path.end = new google.maps.Marker({
-          position: place.geometry.location,
+        
+        
+            
+        this.clusters.start = new google.maps.Marker({
+          position: this.path.start,
           map: this.map
         });
         
-        this._updatePath();
+        this.clusters.end = new google.maps.Marker({
+          position: this.path.end,
+          map: this.map
+        });
     }
     
     _updatePath(){
@@ -103,8 +121,8 @@ class Map{
         }
             
         let dirQuery = {
-          origin: this.path.start.position,
-          destination: this.path.end.position,
+          origin: this.path.start,
+          destination: this.path.end,
           travelMode: "DRIVING",
           waypoints: this.path.waypoints
         }
@@ -114,6 +132,18 @@ class Map{
               this.directionsService.renderer.setDirections(result);
             }
          });
+    }
+    
+    drawPath(path){
+        this.path.start = path.postaje[0].lokacija;
+        this.path.end = path.postaje[path.postaje.length-1].lokacija;
+        
+        this.path.waypoints = [];
+        for(let i=1; i<path.postaje.length-1; i++){
+            this.path.waypoints.push({location:path.postaje[i].lokacija, stopover:false});
+        }
+        
+        this._renderMap();
     }
     
 }
