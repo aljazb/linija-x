@@ -42,7 +42,7 @@ function isci_prevoznika() {
 
 
 function initMap() {
-    initMapId ("map", "vstop", "izstop");
+    initMapId ("map_2", "vstop_2", "izstop_2");
 }
 
 
