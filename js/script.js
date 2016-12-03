@@ -6,7 +6,6 @@ function main() {
     $("#isci_prevoznika").click(isci_prevoznika);
     
     prikazi_prevoz(podatki["prevozi"][0]);
-    
 }
 
 
@@ -88,4 +87,12 @@ function prikazi_prevoz(prevoz) {
 }
 function initMapId (map_id, vstop_id, izstop_id, mode) {
     map = new Map(document.getElementById(map_id), document.getElementById(vstop_id),document.getElementById(izstop_id), mode);
+}
+
+
+function dodajPostaje(stevilo) {
+    $("#dodanePostaje").html("");
+    for (var i = 0; i < stevilo; i++) {
+        $("#dodanePostaje").append(`<div class="panel-body"><input type="text" class="form-control" id="postaja" value="Postaja ${i}"></div>`)
+    }
 }
