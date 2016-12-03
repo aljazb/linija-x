@@ -4,8 +4,9 @@ function main() {
     $("#uporabnik").click(uporabnik_clicked);
     $("#prevoznik").click(prevoznik_clicked);
     $("#isci_prevoznika").click(isci_prevoznika);
+    $("#potrditev_prevoznika").click(potrditev_prevoznika);
     
-    prikazi_prevoz(podatki["prevozi"][0]);
+    // prikazi_prevoz(podatki["prevozi"][0]);
     
 }
 
@@ -19,6 +20,7 @@ function uporabnik_clicked() {
     $("#uporabnik").addClass("active");
     
     initMapId("map", "vstop", "izstop", "FIND");
+    map.setOnPathChangedListener(prikazi_prevoz);
 }
 
 
@@ -50,7 +52,13 @@ function initMap() {
 }
 
 
+var vstopno = "";
+
 function prikazi_prevoz(prevoz) {
+    var vstop = prevoz.first;
+    var izstop = prevoz.last;
+    prevoz = prevoz.drive;
+    
     var linija = podatki["linije"][prevoz.linija];
     var datum = prevoz.datum;
     var ura = String(linija.odhodi["ura"]);
@@ -81,16 +89,38 @@ function prikazi_prevoz(prevoz) {
     $("#barva").text(avto.barva);
     $("#registracija").text(avto.registracija);
     
-    
+    var vstop_izstop = "";
+    var html_string = "<div class=\"panel-heading\">Postaje</div>";
     for (var i=0; i<postaje.length; i++) {
-        var vstop_izstop = "";
-        var template = "<div class=\"panel-body\"> <div class=\"col-md-4\"> $(ime_postaje) </div> <div class=\"col-md-8\"> $(vstop_izstop) </div> </div> "
-        $("#postaje").html(template);
+        if (i == vstop) {
+            vstop_izstop = "Vstop";
+            vstopno = postaje[i].ime;
+        }
+        else if (i == izstop) {
+            vstop_izstop = "Izstop";
+        }
+        else {
+            vstop_izstop = "";
+        }
+        var ime_postaje = postaje[i].ime;
+        html_string += ` <div class=\"panel-body\"> <div class=\"col-md-4\"> ${ime_postaje} </div> <div class=\"col-md-8\"> ${vstop_izstop} </div> </div> `;
     }
+    $("#postaje").html(html_string);
+    
+    $("#prevoz_info").show(500);
     
 }
+
+
+function potrditev_prevoznika() {
+    var txt = $("#datum_ura").text();
+    console.log(txt);
+    $("#ura_prevoza").text(txt);
+    $("#lokacija_prevoza").text(vstopno);
+    $("#izbran_prevoz").show(500);
+}
+
+
 function initMapId (map_id, vstop_id, izstop_id, mode) {
     map = new Map(document.getElementById(map_id), document.getElementById(vstop_id),document.getElementById(izstop_id), mode);
 }
-
-"<div>$(ime)<div>"

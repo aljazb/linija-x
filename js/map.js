@@ -24,8 +24,6 @@ class Map{
         
         this.mode = mode; // FIND, EDIT 
         
-        this.onPathChangedListener = function(e) {};
-        
         $(searchFrom).on('keydown', this._searchFromChanged.bind(this));
         $(searchTo).on('keydown', this._searchToChanged.bind(this));
         this.map.addListener('click', this._mapClick.bind(this));
