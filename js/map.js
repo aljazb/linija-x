@@ -182,8 +182,6 @@ var MapHelper = {
                 return [this.distance(postaja.lokacija, end), j+minIn[1]];
             }).sort()[0];
             
-            console.log(minIn);
-            console.log(minOut);
             return [minIn[0]+minOut[0], minIn[1], minOut[1], i];
         }).sort()[0];
         
