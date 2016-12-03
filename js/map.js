@@ -24,6 +24,8 @@ class Map{
         
         this.mode = mode; // FIND, EDIT 
         
+        this.onPathChangedListener = function(e) {};
+        
         $(searchFrom).on('keydown', this._searchFromChanged.bind(this));
         $(searchTo).on('keydown', this._searchToChanged.bind(this));
         this.map.addListener('click', this._mapClick.bind(this));
@@ -119,6 +121,7 @@ class Map{
         let travelMode;
         if(this.mode=="FIND"){
             let closest = MapHelper.findClosestPath(this.path.start, this.path.end);
+            this.onPathChangedListener(closest);
             waypoints = closest.path.postaje.slice(closest.first, closest.last+1).map((e)=>{
                return {location:e.lokacija, stopover: false}; 
             });
@@ -152,6 +155,10 @@ class Map{
         }
         
         this._renderMap();
+    }
+    
+    setOnPathChangedListener(f){
+        this.onPathChangedListener = f;
     }
     
 }
