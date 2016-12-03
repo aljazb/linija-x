@@ -81,11 +81,16 @@ function prikazi_prevoz(prevoz) {
     $("#barva").text(avto.barva);
     $("#registracija").text(avto.registracija);
     
+    
     for (var i=0; i<postaje.length; i++) {
-        // append to HTML
+        var vstop_izstop = "";
+        var template = "<div class=\"panel-body\"> <div class=\"col-md-4\"> $(ime_postaje) </div> <div class=\"col-md-8\"> $(vstop_izstop) </div> </div> "
+        $("#postaje").html(template);
     }
     
 }
 function initMapId (map_id, vstop_id, izstop_id, mode) {
     map = new Map(document.getElementById(map_id), document.getElementById(vstop_id),document.getElementById(izstop_id), mode);
 }
+
+"<div>$(ime)<div>"
