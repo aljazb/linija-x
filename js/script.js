@@ -38,6 +38,8 @@ function isci_prevoznika() {
     console.log(ura);
     console.log(dan);
     
+    // check if not empty
+    
 }
 
 
@@ -48,4 +50,9 @@ function initMap() {
 
 function initMapId (map_id, vstop_id, izstop_id) {
     map = new Map(document.getElementById(map_id), document.getElementById(vstop_id),document.getElementById(izstop_id));
+}
+
+
+function prikazi_prevoz() {
+    
 }

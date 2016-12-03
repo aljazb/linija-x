@@ -2,7 +2,7 @@
 
 class Map{
     constructor(mapElement, searchFrom, searchTo, mode){
-        this.map = new google.maps.Map(document.getElementById('map'), {
+        this.map = new google.maps.Map(mapElement, {
           center: {lat: 46.057093, lng: 14.505930},
           zoom: 13
         });

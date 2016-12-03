@@ -1,3 +1,11 @@
 .top_margin {
     margin-top: 30px !important;
 }
+
+#map, #map_2 {
+    height: 100%;
+}
+
+#isci_prevoznika {
+    margin-top: 5px;
+}
