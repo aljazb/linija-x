@@ -27,18 +27,22 @@ class Map{
         this.onPathChangedListener = function(e) {};
         this.onStationsChangedListener = function(e) {};
         
-        //$(searchFrom).on('keydown', this._searchFromChanged.bind(this));
-        //$(searchTo).on('keydown', this._searchToChanged.bind(this));
+        $(searchFrom).on('keydown', this._searchFromChanged.bind(this));
+        $(searchTo).on('keydown', this._searchToChanged.bind(this));
         this.map.addListener('click', this._mapClick.bind(this));
     }
     
     _searchFromChanged(e){
+        if(this.mode == "FIND")
+            return;
         if(e.key=="Enter"){
             this._searchPlace("from");
         }
     }
     
     _searchToChanged(e){
+        if(this.mode == "FIND")
+            return;
         if(e.key=="Enter"){
             this._searchPlace("to");
         }
@@ -169,6 +173,11 @@ class Map{
     
     setOnStationsChangedListener(f){
         this.onStationsChangedListener = f;
+    }
+    
+    search(){
+        this._searchPlace("from");
+        this._searchPlace("to");
     }
     
 }

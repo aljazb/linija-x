@@ -40,7 +40,7 @@ function isci_prevoznika() {
     console.log(dan);
     
     // check if not empty
-    
+    map.search();
 }
 
 
