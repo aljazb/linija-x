@@ -42,7 +42,7 @@ class Map{
     }
     
     _mapClick(e){
-        if(this.path.active){
+        if(this.path.active && this.mode == "EDIT"){
             this.path.waypoints.push({location:e.latLng, stopover:false});
             this._updatePath();
         }
@@ -115,11 +115,10 @@ class Map{
             this.path.active = true;
         }
         
-        let closest = MapHelper.findClosestPath(this.path.start, this.path.end);
-        
         let waypoints;
         let travelMode;
         if(this.mode=="FIND"){
+            let closest = MapHelper.findClosestPath(this.path.start, this.path.end);
             waypoints = closest.path.postaje.slice(closest.first, closest.last+1).map((e)=>{
                return {location:e.lokacija, stopover: false}; 
             });
@@ -128,7 +127,6 @@ class Map{
             waypoints = this.path.waypoints;
             travelMode = "DRIVING";
         }
-        console.log(waypoints);
         
         let dirQuery = {
           origin: this.path.start,
@@ -180,10 +178,12 @@ var MapHelper = {
             let minIn = linija.postaje.map((postaja, j)=>{
                 return [this.distance(postaja.lokacija, start), j];
             }).sort()[0];
-            let minOut = linija.postaje.slice(minIn[1]+1).map((postaja, j)=>{
-                return [this.distance(postaja.lokacija, end), j+minIn[1]+1];
+            let minOut = linija.postaje.slice(minIn[1]).map((postaja, j)=>{
+                return [this.distance(postaja.lokacija, end), j+minIn[1]];
             }).sort()[0];
             
+            console.log(minIn);
+            console.log(minOut);
             return [minIn[0]+minOut[0], minIn[1], minOut[1], i];
         }).sort()[0];
         
